@@ -52,11 +52,15 @@
         document.write("<script type='text/javascript' src='" + JSRoute.Host + JSRoute.Common + "'><\/script>");
     </script>
     <script>
+        document.write("<script type='text/javascript' src='" + JSRoute.Host + JSRoute.mintUI + "'><\/script>");
+    </script>
+    <script>
         //加载addAddress.js文件
         document.write("<script type='text/javascript' src='" + JSRoute.Host + JSRoute.Page.addAddress + "'><\/script>");
     </script>
     <script>
         LoadCss(CSSRoute.Host + CSSRoute.Page.addAddress)
+        LoadCss(CSSRoute.Host + CSSRoute.mintUI)
     </script>
 </body>
 </html>

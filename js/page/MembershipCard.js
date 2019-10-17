@@ -37,7 +37,8 @@ new Vue({
                         }
                     }
                     if(data.Success == -999){
-                        console.log(jsonobj.Message);
+                        // console.log(jsonobj.Message);
+                        // that.$toast("请重新登录");
                         window.location.href = '../member/login.html'
                     }
                 },

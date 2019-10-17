@@ -205,6 +205,7 @@ new Vue({
                             console.log('数据请求成功');
                             var url = e.srcElement.baseURI
                             console.log('升序');
+                            that.$toast("升序");
                             var jsonobj = eval("(" + data.Result + ")")	//将数据解析成json字符串的形式
                             that.Right = jsonobj.ProductList;
                         },
@@ -231,6 +232,7 @@ new Vue({
                                 console.log('数据请求成功');
                                 var url = e.srcElement.baseURI
                                 console.log('降序');
+                                that.$toast("降序");
                                 var jsonobj = eval("(" + data.Result + ")")	//将数据解析成json字符串的形式
                                 that.Right = jsonobj.ProductList;
                             },
@@ -260,6 +262,7 @@ new Vue({
                             console.log('数据请求成功');
                             var url = e.srcElement.baseURI
                             console.log('升序');
+                            that.$toast("升序");
                             var jsonobj = eval("(" + data.Result + ")")	//将数据解析成json字符串的形式
                             that.Right = jsonobj.ProductList;
                         },
@@ -286,6 +289,7 @@ new Vue({
                                 console.log('数据请求成功');
                                 var url = e.srcElement.baseURI
                                 console.log('降序');
+                                that.$toast("降序");
                                 var jsonobj = eval("(" + data.Result + ")")	//将数据解析成json字符串的形式
                                 that.Right = jsonobj.ProductList;
                             },

@@ -13,16 +13,19 @@ var vm = new Vue({
     methods:{
         animate(){
             if (this.userMobile.length == 0) {
-                alert('请确认后重新输入')
+                // alert('请确认后重新输入')
+                this.$toast("手机号码不得为空");
                 return false;
             }
             if (this.userMobile.length != 11) {
-                alert('请确认后重新输入')
+                // alert('请确认后重新输入')
+                that.$toast("请确认手机号码位数");
                 return false;
             }
             var myreg = /^(0|86|17951)?(13[0-9]|15[0-9]|17[0-9]|18[0-9]|14[0-9]|199|198|166)[0-9]{8}$/;
             if (!myreg.test(this.userMobile)) {
-                alert('请确认后重新输入')
+                // alert('请确认后重新输入')
+                that.$toast("请确认手机号码后重新输入");
                 return false;
             } else {
                 return true;
@@ -61,6 +64,7 @@ var vm = new Vue({
                         window.location.href = "../page/address.html";
                     }
                     else if(data.Success == 0){
+                        that.$toast("数据加载失败");
                         console.log(data)
                         console.log(that.ReceiveMan),
                         console.log(that.ReceiveMobile),
@@ -69,7 +73,8 @@ var vm = new Vue({
                         console.log(that.addressPoint+that.ReceiveAddr)
                         console.log('数据请求失败')
                     }else if(data.Success == -999){
-                        alert('登录已过期，请重新登录');
+                        // that.$toast("请重新登录");
+                        // alert('登录已过期，请重新登录');
                         window.location.href = "../member/login.html";
                     }
                 },

@@ -57,6 +57,7 @@ var CSSRoute = {
 		'address':'/page/address.css?t=20191012',
 		'addAddress':'/page/addAddress.css?t=20191012',
 		'editAddress':'/page/editAddress.css?t=20191012',
+		'productDetail':'/page/productDetail.css?t=20191017',
 	}
 };
 
@@ -89,6 +90,7 @@ var JSRoute = {
 		'address':'/page/address.js?t=20191012',
 		'addAddress':'/page/addAddress.js?t=20191012',
 		'editAddress':'/page/editAddress.js?t=20191012',
+		'productDetail':'/page/productDetail.js?t=20191017'
 	}
 };
 

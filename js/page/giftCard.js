@@ -61,6 +61,7 @@ let vm = new Vue({
                             console.log(that.Result)    //打印后台返回到的数据
                         }
                         if(data.Success == 0){
+                            that.$toast("数据加载失败");
                             console.log(vm.sumBalance)
                             vm.showLoading = true;
                             if(vm.TimeOut == "N"){
@@ -76,7 +77,8 @@ let vm = new Vue({
                             }
                         }
                         if(data.Success == -999){
-                            alert(jsonobj.Message);
+                            // alert(jsonobj.Message);
+                            // that.$toast("请重新登录");
                             window.location.href = "../../view/member/login.html"
                         }
                     },

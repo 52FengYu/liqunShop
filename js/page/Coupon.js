@@ -92,7 +92,8 @@ $(function () {
                                 }
                             }
                             if (json.Success == -999) {
-                                alert(jsonObj.Message);
+                                // alert(jsonObj.Message);
+                                // that.$toast("请重新登录");
                                 window.location.href = "../member/login.html";
                             }
 
@@ -145,14 +146,16 @@ $(function () {
                                 }
                             }
                             if (json.Success == -999) {
-                                $.alert("登录失效,请重新登录");
+                                // $.alert("登录失效,请重新登录");
+                                // that.$toast("请重新登录");
                                 window.location.href = "../member/login.html";
                             }
 
                         },
                         error: function () {
                             //错误处理
-                            $.alert('无法连接服务器')
+                            // $.alert('无法连接服务器')
+                            that.$toast("无法连接至服务器");
                         }
                     });
 
@@ -202,13 +205,15 @@ $(function () {
                                 }
                             }
                             if (json.Success == -999) {
-                                $.alert("登录失效,请重新登录");
+                                // $.alert("登录失效,请重新登录");
+                                // that.$toast("请重新登录");
                                 window.location.href = "../member/login.html";
                             }
                         },
                         error: function () {
                             //错误处理
-                            $.alert('无法连接服务器')
+                            // $.alert('无法连接服务器')
+                            that.$toast("无法连接至服务器");
                         }
                     });
                 }

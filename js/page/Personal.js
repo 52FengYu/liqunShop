@@ -39,9 +39,11 @@ new Vue({
                     }
                     if(data.Success == 0){
                         console.log("数据请求失败，请重试")
+                        that.$toast("数据请求失败，请重试");
                     }
                     if(data.Success == -999){
                         console.log("请重新登录");
+                        // that.$toast("请重新登录");
                         window.location.href = '../member/login.html'
                     }
                 },

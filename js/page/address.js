@@ -31,16 +31,19 @@ new Vue({
                             console.log(that.Result)
                         }else if(data.Success == 0){
                             console.log("数据请求失败")
+                            that.$toast("数据请求失败");
                             if ($state != null) {
                                 $state.complete();//停止加载
                             }
                         }else if(data.Success == -999){
-                            alert('登录已过期，请重新登录');
+                            // alert('登录已过期，请重新登录');
+                            // that.$toast("登录已过期 请重新登录");
                             window.location.href = "../member/login.html";
                         }
                 },
                 error:function(msg){
                     console.log('数据请求失败')
+                    this.$toast(msg.Result);
                     console.log(msg)
                     }
                 })
@@ -71,18 +74,22 @@ new Vue({
                             that.Result = jsonObj;
                             console.log(that.Result)
                             console.log('删除成功')
+                            that.$toast("删除成功");
                             window.location.reload()
                         }
                         if(data.Success == 0){
                             console.log("数据请求失败")
+                            that.$toast("数据请求失败");
                         }
                         if(data.Success == -999){
-                            alert('登录已过期，请重新登录');
+                            // alert('登录已过期，请重新登录');
+                            // that.$toast("请重新登录");
                             window.location.href = "../member/login.html";
                         }
                 },
                 error:function(msg){
                     console.log('数据请求失败')
+                    that.$toast("数据请求失败");
                     console.log(msg)
                     }
                 })

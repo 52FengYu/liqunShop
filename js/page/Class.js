@@ -33,13 +33,23 @@ new Vue({
                     console.log('数据请求成功');
                     var jsonObj = eval("(" + data.Result + ")")	//将数据解析成json字符串的形式
                     console.log(data.Result)    //打印出来每一条对象
-                    that.Result = jsonObj;
-                    console.log(jsonObj)    //打印后台返回到的数据
-                        //将左侧导航栏数据显示到页面上
-                        var arr = $(".left");
-                        $.each(jsonObj,function(index,item){
-                            OutputLeftData(arr,item);
-                        })
+                    if(data.Success == 1){
+                        that.Result = jsonObj;
+                        console.log(jsonObj)    //打印后台返回到的数据
+                            //将左侧导航栏数据显示到页面上
+                            var arr = $(".left");
+                            $.each(jsonObj,function(index,item){
+                                OutputLeftData(arr,item);
+                            })
+                        }
+                        else if(data.Success == 0){
+                            that.$toast("数据请求失败了呢");
+                            console.log(data)
+                            console.log('数据请求失败')
+                        }else if(data.Success == -999){
+                            // that.$toast("请重新登录");
+                            window.location.href = "../member/login.html";
+                        }
                     },
                 error: function(msg){
                     console.log(msg);

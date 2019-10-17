@@ -39,18 +39,20 @@ new Vue({
                              }
                          }else if(data.Success == 0){
                             console.log("数据加载失败");
+                            that.$toast("数据加载失败");
                             showMore = true
                             console.log(data.Result)
                             if($state != null){
                                 $state.complete();//停止加载
                             }
                         }else if(data.Success == -999){
-                            alert(jsonObj.Message);
+                            // that.$toast("请重新登录");
                             window.location.href = "../member/login.html";
                         } 
                     },
                 error:function(msg){
                     console.log('数据请求失败')
+                    that.$toast("出错了");
                     console.log(msg)
                     }
                 })
@@ -79,7 +81,7 @@ new Vue({
                         window.location.reload();   //刷新当前页面
                     },
                     error:function(msg){
-                        console.log('数据请求失败')
+                        that.$toast("出错了");
                         console.log(msg)
                         }
                 })

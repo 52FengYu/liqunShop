@@ -76,8 +76,6 @@
                             console.log(url.slice(80,90))
                             var jsonobj = eval("(" + data.Result + ")")	//将数据解析成json字符串的形式
                             that.Right = jsonobj.ProductList;
-                            //console.log(data.Result + '2222')    //打印出来每一条对象
-                            //console.log(that.Right)    //打印后台返回到的数据
                         },
                         error:function(msg){
                             console.log(msg)
@@ -109,8 +107,6 @@
                             console.log(url.slice(80,90))
                             var jsonobj = eval("(" + data.Result + ")")	//将数据解析成json字符串的形式
                             that.Right = jsonobj.ProductList;
-                            //console.log(data.Result + '2222')    //打印出来每一条对象
-                            //console.log(that.Right)    //打印后台返回到的数据
                         },
                         error:function(msg){
                             console.log(msg)
@@ -145,12 +141,10 @@
                                     console.log('升序');
                                     var jsonobj = eval("(" + data.Result + ")")	//将数据解析成json字符串的形式
                                     that.Right = jsonobj.ProductList;
-                                    //console.log(data.Result + '2222')    //打印出来每一条对象
-                                    //console.log(that.Right)    //打印后台返回到的数据
                                 },
                                 error:function(msg){
                                     console.log(msg)
-                                    }
+                                }
                             })
                             
                     }else{
@@ -175,12 +169,10 @@
                                     console.log('降序');
                                     var jsonobj = eval("(" + data.Result + ")")	//将数据解析成json字符串的形式
                                     that.Right = jsonobj.ProductList;
-                                    //console.log(data.Result + '2222')    //打印出来每一条对象
-                                    //console.log(that.Right)    //打印后台返回到的数据
                                 },
                                 error:function(msg){
                                     console.log(msg)
-                                    }
+                                }
                             })
                         
                     }
@@ -198,7 +190,6 @@
                         async: true,
                         dataType:"json",
                         data:{
-                            //ClassID:e.target.id,	
                             ClassID:that.left[0].ID,				//在获取到item中id之后获取到的右侧列表详情数据
                             MainSupplierID:'SU190701000003',
                         },
@@ -206,14 +197,8 @@
                             request.setRequestHeader("TokenID", tokenid);
                         },
                         success:function(data){
-                            // console.log('数据请求成功');
-                            // console.log(e.target.id)
-                            // console.log(that.left[0].ID)	//输出左侧列表的第一条数据的id
                             var jsonobj = eval("(" + data.Result + ")")	//将数据解析成json字符串的形式
                             that.Right = jsonobj.ProductList;
-                            
-                            //console.log(data.Result + '2222')    //打印出来每一条对象
-                            //console.log(that.Right)    //打印后台返回到的数据
                         },
                         error:function(msg){
                             console.log(msg)
@@ -243,8 +228,6 @@
                         console.log('数据请求成功');
                         var jsonObj = eval("(" + data.Result + ")")	//将数据解析成json字符串的形式
                         that.left = jsonObj;
-                        //console.log(data.Result + '444')    //打印出来每一条对象
-                        //console.log(jsonObj)    //打印后台返回到的数据
                     },
                 error:function(msg){
                     console.log(msg)
