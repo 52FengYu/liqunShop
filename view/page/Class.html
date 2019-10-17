@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,minimum-scale=1,user-scalable=no,viewport-fit=cover" />
+		<meta id="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no" name="viewport" />
+		<meta name="format-detection" content="telephone=no" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<link rel="icon" type="image/x-icon" href="../../favicon.ico" />
+        <link rel="stylesheet" type="text/css" href="../../css/common/font-awesome/css/font-awesome.min.css" />
+        <script src="../../js/config.js"></script>  
+		<title>商品列表</title>
+	</head>
+	<body style="display:block;">
+		 <div id="app">
+            <!-- header -->
+            <div class="top" style="display:flex;justify-content:space-around;position:relative;line-height:0.5rem;height:1.5rem;top:0.5rem"> 
+                <span><i><svg t="1568805344201" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="2026" width="20" height="20"><path d="M702.94996 958.89419c-8.375761 0-16.751522-3.196809-23.14514-9.590426L265.159102 534.658046c-12.787234-12.777001-12.787234-33.513278 0-46.289256L679.80482 73.722048c12.787234-12.787234 33.502022-12.787234 46.289256 0 12.787234 12.777001 12.787234 33.513278 0 46.289256L334.593498 511.512906l391.501602 391.501602c12.787234 12.777001 12.787234 33.513278 0 46.289256C719.701482 955.697381 711.325721 958.89419 702.94996 958.89419z" p-id="2027"></path></svg></i></span>
+                <div style="position:relative">
+                    <input type="text" placeholder="联合利华" style="border-radius:10px;border: 1px solid #ccc ;text-shadow: none ;padding-left: 2rem;	-webkit-appearance: none ;-webkit-user-select: text ;outline-color: transparent ;box-shadow: none;padding-left:2rem"/>
+                    <span style="position:absolute;top:0.15rem;left:0.5rem"><i class="fa fa-search" aria-hidden="true"></i></span>
+                </div>	
+                <span id="span"><i class="fa fa-shopping-cart" aria-hidden="true"></i></span>
+            </div>
+            <div class="contain" style="display:flex">
+                <ul class="left">
+                    <!-- 在这里动态显示左侧导航栏 -->
+                </ul>
+                <div class="right" style="height:80%;width:70%;margin-top:1.6rem">
+                    <div class="content" id="content">
+                        <!-- 这里显示右侧title内容 -->
+                        <div class="item" v-for="item in Result">
+                            <span>{{item.ClassName}}</span>   
+                            <div class="items" id="items">
+                                <div class="little" 
+                                    v-for="item in item.LowLevers" 
+                                    :key="item.id"
+                                    :id="item.ID"
+                                >
+                                    <a  @click="goPage(WebRoute.Page.ClassSearch + '&id=' + item.ID)">   
+                                        <!-- <img :src="item.ClassImageURL" /> -->
+                                        <img id="img" style="width:18px height:18px"  src="https://www.baidu.com//s?rsv_idx=1&wd=%E9%93%B6%E7%81%B0%E8%89%B2&usm=1&ie=utf-8&rsv_cq=&rsv_dl=0_right_recommends_merge_21102&euri=8f86303be76a49e89c943fa30165b949">   <!-- 后期修改-->
+                                        <p id="p">{{item.ClassName}}</p>   
+                                    </a>
+                                </div>
+                            </div> 
+                        </div> 
+                    </div>
+                </div>	
+            </div>
+        </div>
+		<script type="text/javascript" src="../../js/common/jquery-1.9.1.min.js"></script>
+		<script type="text/javascript" src="../../js/common/loadjscss.js"></script>
+		<script type="text/javascript" src="../../js/common/vue-2.6.10.min.js"></script>
+		<script type="text/javascript" src="../../js/common/timehelper.js"></script>
+		<script type="text/javascript" src="../../js/common/fastclick.js"></script>
+		<script>
+			//每分钟获取新的路由文件 
+			document.write("<script type='text/javascript' src='../../js/route.js?t=" + GetURLTimeStr(10) + "'><\/script>");
+		</script>
+		<script type="text/javascript">
+			//如果是Debug模式替换路由路径
+			DebugRoute();
+        </script>
+        <script>
+            function OutputLeftData(arr,item){
+                arr.append("<li>" + item.ClassName + "</li>")
+            }
+        </script>
+        <script type="text/javascript">
+			//加载公共函数JS
+			document.write("<script type='text/javascript' src='" + JSRoute.Host + JSRoute.Common + "'><\/script>");
+                </script>
+        <script>
+            //加载本页面的css
+            LoadCss(CSSRoute.Host + CSSRoute.Page.Class);
+            </script>
+        <script type="text/javascript">
+            //加载本页面JS
+            document.write("<script type='text/javascript' src='" + JSRoute.Host + JSRoute.Page.Class + "'><\/script>");
+        </script>
+    </body>
+   </html>

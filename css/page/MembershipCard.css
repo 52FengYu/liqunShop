@@ -1,0 +1,108 @@
+html{
+    font-size: calc(100vw/30);
+}
+#app{
+    width:30rem;
+    height:53.3rem;
+    background: rgb(245,245,245)
+}
+.top{
+    width:28rem;
+    height:9rem;
+    padding-top:2rem;
+    padding-left:2rem;
+    background: -webkit-linear-gradient(left, rgb(229,187,116) , rgb(216,173,76)); /* Safari 5.1 - 6.0 */
+    background: -o-linear-gradient(right, rgb(229,187,116), rgb(216,173,76)); /* Opera 11.1 - 12.0 */
+    background: -moz-linear-gradient(right, rgb(229,187,116), rgb(216,173,76)); /* Firefox 3.6 - 15 */
+    background: linear-gradient(to right, rgb(229,187,116) , rgb(216,173,76)); /* 标准的语法 */
+}
+.memberInfo{
+    display: flex;
+    width: 28rem;
+    height: 14rem;
+    border-radius: 15px;
+    background: #fff;
+    margin-left: -1rem;
+    box-shadow: 0 0.5rem 0.5rem #ccc;
+}
+.memberInfo .Info{
+    width: 11rem;
+    height: 9rem;
+    line-height: 3rem;
+    padding-left: 6rem;
+    margin-top:1rem;
+}
+.memberInfo .Info p:first-child{
+    font-family: '宋体';
+    font-weight: 700;
+    font-size:1rem;
+}
+.memberInfo .Info span{
+    font-family: '宋体';
+    color:#ccc;
+    font-size:1rem;
+}
+.memberInfo .Info p:last-child{
+    font-family: '宋体';
+    display: block;
+    width: 8rem;
+    border-radius: 2rem;
+    border: 1px solid red;
+    height: 1rem;
+    padding-top: 1rem;
+}
+.memberInfo .Info p a{
+    text-decoration: none;
+    color: red;
+    font-size: 0.5rem;
+    line-height: 0rem;
+    display: block;
+    text-align: center;
+}
+.integral{
+    padding-top: 1.5rem;
+    margin-left: 3rem;
+    width: auto;
+}
+.integral span{
+    font-family: '宋体';
+    font-size: 1.5rem;
+    display: block;
+}
+.integral b{
+    display: block;
+    margin-top: 1rem;
+    color: red;
+    font-size: 2rem;
+    width: 7rem;
+    text-align: center;
+}
+.assets{
+    display: flex;
+    justify-content: space-evenly;
+    margin-top: -2rem;
+    font-family: '宋体';
+    font-size: 1.4rem;
+    color:#999;
+    margin-left: -1rem;
+    width:100%
+}
+.assets .Explain{
+    width: 11rem;
+}
+.code{
+    background: #fff;
+    margin-top: 7rem;
+    height: 29rem;
+    width: 27rem;
+    margin-left: 1.5rem;
+    border-radius: 1rem;
+}
+.code h1{
+    background: -webkit-linear-gradient(left, rgb(229,187,116) , rgb(216,173,76)); /* Safari 5.1 - 6.0 */
+    background: -o-linear-gradient(right, rgb(229,187,116), rgb(216,173,76)); /* Opera 11.1 - 12.0 */
+    background: -moz-linear-gradient(right, rgb(229,187,116), rgb(216,173,76)); /* Firefox 3.6 - 15 */
+    background: linear-gradient(to right, rgb(229,187,116) , rgb(216,173,76)); /* 标准的语法 */
+    border-radius: 1rem 1rem 0 0;
+    height: 4rem;
+}

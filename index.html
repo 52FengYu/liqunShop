@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+</head>
+
+<body  style="display: none;">
+    <script type="text/javascript" src="./js/common/timehelper.js"></script>
+    <script>
+        document.close();
+        //每分钟获取新的路由文件 
+        document.write("<script type='text/javascript' src='./js/route.js?t=" + GetURLTimeStr(10) + "'><\/script>");
+    </script>
+    <script type="text/javascript" src="./js/config.js"></script>
+    <script type="text/javascript">
+        //如果是Debug模式替换路由路径
+        DebugRoute();
+    </script>
+    <script type="text/javascript">
+        //加载公共函数JS
+        document.write("<script type='text/javascript' src='" + JSRoute.Host + JSRoute.Common + "'><\/script>");
+    </script>
+    <script type="text/javascript">
+        goPage(WebRoute.Host+WebRoute.Index);
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,minimum-scale=1,user-scalable=no,viewport-fit=cover" />
+		<meta id="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no" name="viewport" />
+		<meta name="format-detection" content="telephone=no" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<link rel="icon" type="image/x-icon" href="../../favicon.ico" />
+		<link rel="stylesheet" type="text/css" href="../../css/common/font-awesome/css/font-awesome.min.css" />
+		<script src="../../js/config.js"></script>  
+		<title>搜索页</title>
+	</head>
+	<body>
+		<div id="app">
+			<!-- 头部 -->
+			<div class="top" style="display:flex;justify-content:space-around;position:relative;line-height:0.5rem;height:1.5rem;top:0.5rem"> 
+				<span><i><svg t="1568805344201" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="2026" width="20" height="20"><path d="M702.94996 958.89419c-8.375761 0-16.751522-3.196809-23.14514-9.590426L265.159102 534.658046c-12.787234-12.777001-12.787234-33.513278 0-46.289256L679.80482 73.722048c12.787234-12.787234 33.502022-12.787234 46.289256 0 12.787234 12.777001 12.787234 33.513278 0 46.289256L334.593498 511.512906l391.501602 391.501602c12.787234 12.777001 12.787234 33.513278 0 46.289256C719.701482 955.697381 711.325721 958.89419 702.94996 958.89419z" p-id="2027"></path></svg></i></span>
+				<div style="position:relative">
+					<input type="text" @keyup.enter="search" v-model="msg" style="border-radius:10px;border: 1px solid #ccc ;text-shadow: none ;padding-left: 2rem;	-webkit-appearance: none ;-webkit-user-select: text ;outline-color: transparent ;box-shadow: none;padding-left:2rem"/>
+					<span style="position:absolute;top:0.15rem;left:0.5rem" @click="search"><i class="fa fa-search" aria-hidden="true"></i></span>
+				</div>	
+				<span><i class="fa fa-shopping-cart" aria-hidden="true"></i></span>
+			</div>
+			<!-- 主体 -->
+			<div class="right">
+				<div class="Top">
+					<button class="layui-btn layui-btn-primary active" @click="comprehensive">综合</button>
+					<button class="layui-btn layui-btn-primary" @click="Sales">销量 <span class="lower"><svg t="1569408813759" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="1106" width="12" height="12"><path d="M889.06160075 318.13586631l-377.06160075 377.06160072-377.06160075-377.06160072h754.1232015z" p-id="1107"></path></svg></span> </button>
+					<button class="layui-btn layui-btn-primary" @click="Price">价格 <span class="upper"><svg t="1569408926575" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="1924" width="10" height="10"><path d="M511.96 257.73L67 766.27h890L511.96 257.73z" p-id="1925"></path></svg></span><span class="lower"><svg t="1569408813759" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="1106" width="12" height="12"><path d="M889.06160075 318.13586631l-377.06160075 377.06160072-377.06160075-377.06160072h754.1232015z" p-id="1107"></path></svg></span> </button>
+				</div>
+				<div class="content" 
+					v-clock>
+					<div class="item" 
+							v-for="item in Right"
+							:key="item.ID"
+							:id="item.ID"
+					>
+						<a @click="goPage('#&ID=' + item.ID)">	<!-- 后期需要改 -->
+							<div class="image">
+								<img :src="item.HeadImageURL">
+							</div>
+							<div class="Multiple">
+								<p>{{item.DisplayName}}</p>
+								<span>￥{{item.MemberPrice}}</span>
+								<i> / {{item.UnitName}}</i>
+								<svg t="1569462523225" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="8253" width="32" height="32"><path d="M896 708.266667 896 708.266667l85.333333-384 0 0c0-2.133333 0-4.266667 0-4.266667 0-12.8-8.533333-21.333333-21.333333-21.333333L275.2 298.666667l-29.866667-113.066667 0 0C243.2 177.066667 234.666667 170.666667 226.133333 170.666667L64 170.666667C51.2 170.666667 42.666667 179.2 42.666667 192s8.533333 21.333333 21.333333 21.333333l145.066667 0L341.333333 710.4l0 0c2.133333 6.4 6.4 10.666667 12.8 12.8C345.6 736 341.333333 750.933333 341.333333 768c0 46.933333 38.4 85.333333 85.333333 85.333333s85.333333-38.4 85.333333-85.333333c0-14.933333-4.266667-29.866667-12.8-42.666667l236.8 0c-6.4 12.8-12.8 27.733333-12.8 42.666667 0 46.933333 38.4 85.333333 85.333333 85.333333s85.333333-38.4 85.333333-85.333333c0-17.066667-4.266667-32-12.8-44.8C889.6 721.066667 893.866667 714.666667 896 708.266667zM808.533333 341.333333l125.866667 0-19.2 85.333333-115.2 0L808.533333 341.333333zM288 341.333333l140.8 0 8.533333 85.333333-128 0L288 341.333333zM345.6 554.666667l-23.466667-85.333333 121.6 0 8.533333 85.333333L345.6 554.666667zM356.266667 597.333333l100.266667 0 8.533333 85.333333-87.466667 0L356.266667 597.333333zM426.666667 810.666667c-23.466667 0-42.666667-19.2-42.666667-42.666667 0-23.466667 19.2-42.666667 42.666667-42.666667s42.666667 19.2 42.666667 42.666667C469.333333 791.466667 450.133333 810.666667 426.666667 810.666667zM597.333333 682.666667l-87.466667 0-8.533333-85.333333L597.333333 597.333333 597.333333 682.666667zM597.333333 554.666667l-102.4 0-8.533333-85.333333L597.333333 469.333333 597.333333 554.666667zM597.333333 426.666667l-115.2 0-8.533333-85.333333L597.333333 341.333333 597.333333 426.666667zM727.466667 682.666667 640 682.666667l0-85.333333 96 0L727.466667 682.666667zM742.4 554.666667 640 554.666667l0-85.333333 110.933333 0L742.4 554.666667zM755.2 426.666667 640 426.666667l0-85.333333 125.866667 0L755.2 426.666667zM810.666667 810.666667c-23.466667 0-42.666667-19.2-42.666667-42.666667 0-23.466667 19.2-42.666667 42.666667-42.666667s42.666667 19.2 42.666667 42.666667C853.333333 791.466667 834.133333 810.666667 810.666667 810.666667zM857.6 682.666667l-87.466667 0 8.533333-85.333333 96 0L857.6 682.666667zM785.066667 554.666667l8.533333-85.333333 110.933333 0-19.2 85.333333L785.066667 554.666667z" p-id="8254" fill="#d81e06"></path></svg>
+							</div>
+						</a>
+					</div>
+				</div>
+			</div>
+		</div>
+		<script type="text/javascript" src="../../js/common/jquery-1.9.1.min.js"></script>
+		<script type="text/javascript" src="../../js/common/loadjscss.js"></script>
+		<script type="text/javascript" src="../../js/common/vue-2.6.10.min.js"></script>
+		<script type="text/javascript" src="../../js/common/timehelper.js"></script>
+		<script type="text/javascript" src="../../js/common/fastclick.js"></script>
+		<script>
+			//每分钟获取新的路由文件 
+			document.write("<script type='text/javascript' src='../../js/route.js?t=" + GetURLTimeStr(10) + "'><\/script>");
+		</script>
+		<script type="text/javascript">
+			//如果是Debug模式替换路由路径
+			DebugRoute();
+		</script>
+		<script type="text/javascript">
+			//加载公共函数JS
+			document.write("<script type='text/javascript' src='" + JSRoute.Host + JSRoute.Common + "'><\/script>");
+		</script>
+		<script>
+			LoadCss(CSSRoute.Host + CSSRoute.Page.layUI);
+		</script>
+		<script>
+			LoadCss(CSSRoute.Host + CSSRoute.Page.productSearch);
+		</script>	
+		<script>
+			//加载本页面js文件
+			document.write("<script type='text/javascript' src='" + JSRoute.Host + JSRoute.Page.ProductSearch + "'><\/script>");
+		</script>
+	</body>
+</html>

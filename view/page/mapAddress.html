@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+<head lang="zh-CN">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=0.7, minimum-scale=0.7, maximum-scale=1.0, user-scalable=no">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="address=no">
+    <script type="text/javascript" src="//3gimg.qq.com/lightmap/components/locationPicker2/js/main-62c2e3b971.js"></script>
+    <script src="../../js/config.js"></script> 
+    <title>地图选点</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        body, html{
+            overflow: hidden;
+        }
+    </style>
+    <script>
+        //iframe页面调用方法
+        $(function(){ 
+
+            adaptHeight();//动态适配高度
+           
+            window.onresize = function() { //横屏、QQ浏览器变全屏模式下的时候，需要重新计算高度              
+                adaptHeight();                
+            }
+
+            window.addEventListener('message', function(event) {
+                var loc = event.data;
+                this.Result=loc;
+                var that=this;
+                    $.ajax({
+                    type : 'get',
+                    url : 'http://apis.map.qq.com/ws/geocoder/v1',
+                    dataType:'jsonp',
+                    data : {
+                        key:"XKJBZ-ZGR6W-UF5RP-OP4XB-2WXZ2-IZBRO",//开发密钥
+                        location:this.Result.latlng.lat+ ',' +this.Result.latlng.lng,//位置坐标
+                        get_poi:"1",//是否返回周边POI列表：1.返回；0不返回(默认)
+                        coord_type:"1",//输入的locations的坐标类型,1 GPS坐标
+                        parameter:{"scene_type":"tohome","poi_num":20},//附加控制功能
+                        output:"jsonp"
+                        },                 
+                    success : function(data, textStatus) {            
+                        if(data.status == 0){
+                            var address = data.result.formatted_addresses.recommend;
+                            var Data = data.result.ad_info.adcode;
+                            // alert('你使用的组件是'+that.Result.module+',刚选择了'+that.Result.poiname+',它位于'+that.Result.poiaddress+',它的经纬度是：'+that.Result.latlng.lat+','+that.Result.latlng.lng+',所属城市为:'+that.Result.cityname + ',adcode为:' + data.result.ad_info.adcode)
+                            goPage(WebRoute.Page.addAddress + '&address=' + loc.poiaddress + loc.poiname + '&所属城市=' + loc.cityname + '&lat=' + loc.latlng.lat + '&lng=' + loc.latlng.lng + '&key=' + 'F4ZBZ-6C2CK-BVGJG-APW5U-7XOYE-TRBUX' + '&adcode=' + data.result.ad_info.adcode)
+                            console.log(that.Adcode);
+                        }else {
+                            alert("系统错误，请联系管理员！")
+                        }
+                    },
+                    error : function() {
+                        alert("系统错误，请联系管理员！")
+                    }
+                });
+            }, false);
+
+            function adaptHeight() {
+                var winH = $(window).height(); 
+                var bodyH = document.documentElement.clientHeight; 
+                if (winH > bodyH) {
+                    window.parent.document.getElementById("iframe").height=winH;
+                } else {
+                    window.parent.document.getElementById("iframe").height=bodyH;
+                }  
+            }
+        });
+    </script>
+</head>
+<body>
+    <!-- 通过 iframe 嵌入地图选点组件 --> 
+    <iframe id="iframe" width="100%" frameborder=0 scrolling="no"
+        src="//apis.map.qq.com/tools/locpicker?search=1&type=1&key=OB4BZ-D4W3U-B7VVO-4PJWW-6TKDJ-WPB77&referer=myapp">
+    </iframe>
+    <script type="text/javascript" src="../../js/common/jquery-1.9.1.min.js"></script>
+    <script type="text/javascript" src="../../js/common/loadjscss.js"></script>
+    <script type="text/javascript" src="../../js/common/vue-2.6.10.min.js"></script>
+    <script type="text/javascript" src="../../js/common/timehelper.js"></script>
+    <script type="text/javascript" src="../../js/common/fastclick.js"></script>
+    <script>
+        //每分钟获取新的路由文件 
+        document.write("<script type='text/javascript' src='../../js/route.js?t=" + GetURLTimeStr(10) + "'><\/script>");
+    </script>
+    <script type="text/javascript">
+        //如果是Debug模式替换路由路径
+        DebugRoute();
+    </script>
+    <script>
+        //加载common.js文件
+        document.write("<script type='text/javascript' src='" + JSRoute.Host + JSRoute.Common + "'><\/script>");
+    </script>
+    <script>            
+        new Vue({
+            el:"#iframe",
+            data(){
+                return{
+                    Result:[],
+                    Adcode:[],
+                }
+            },
+            methods:{
+                
+            }
+        })
+    </script>
+</body>
+</html>

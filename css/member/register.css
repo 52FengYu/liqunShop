@@ -1,0 +1,76 @@
+.weui-cell__hd img {
+	display: block;
+	padding-right: .20rem;
+	height: 1.35rem;
+	box-sizing: content-box;
+}
+
+.weui-cell__bd input {
+	font-size: 0.75rem;
+}
+
+.main .code-btn {
+	color: #D7063B;
+	height: 1.35rem;
+	line-height: 1.35rem;
+
+	width: 5.8rem;
+	height: 1.71rem;
+	border: .03rem solid #D7063B;
+	border-radius: .08rem;
+	font-size: 0.7rem;
+	line-height: 1.71rem;
+	text-align: center;
+	padding: 0;
+}
+
+
+.weui-btn_plain-default {
+	line-height: 1.35rem;
+}
+
+
+.code-btn.active {
+	color: #cccccc;
+	border: .03rem solid #cccccc;
+}
+
+.server {
+	display: flex;
+	margin-top: 0.55rem;
+	font-size: .66rem;
+	color: #9E9E9E;
+	margin-left: 0.5rem;
+	align-items: center;
+}
+
+#server-check {
+	width: 0.775rem;
+	height: 0.775rem;
+	display: inline-block;
+	border: .03rem solid #C9C9C9;
+	position: relative;
+	top: .04rem;
+	margin-right: 0.25rem;
+}
+
+#server-check:before {
+	color: #D7063B;
+}
+
+.server-link {
+	color: #D7063B;
+}
+
+.login-btn {
+	width: 17.6rem;
+	height: 2.4rem;
+	background: #D7063B;
+	border-radius: .08rem;
+	font-size: .75rem;
+	line-height: 2.55rem;
+	color: #FFFFFF;
+	text-align: center;
+	margin: 2rem auto 0 auto;
+	cursor: pointer;
+}

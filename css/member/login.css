@@ -1,0 +1,71 @@
+.main .info {
+	display: flex;
+}
+
+.main .info p {
+	margin-top: 1rem;
+	flex: 1;
+	text-align: center;
+	font-size: 0.8rem;
+	color: #333;
+	cursor: pointer;
+}
+
+.main .info p.active {
+	color: #D7063B;
+}
+
+.main .info p.active:after {
+	content: "";
+	width: 6rem;
+	display: block;
+	margin: .20rem auto 0 auto;
+	background-color: #D7063B;
+	height: .08rem;
+}
+
+.weui-cells:before {
+	border-top: none !important
+}
+
+.weui-cell__hd img {
+	display: block;
+	padding-right: .20rem;
+	height: 1.35rem;
+	box-sizing: content-box;
+}
+
+a.forget{
+  float: right;
+  color: #D7063B;
+  font-size: .8rem;
+  margin-top: .8rem;
+  margin-right: 0.5rem;
+  text-align: right;
+}
+
+.login-btn {
+  width: 17.75rem;
+  height: 2.3rem;
+  background: #D7063B;
+  border-radius: .08rem;
+  font-size: 1rem;
+  line-height: 2.3rem;
+  color: #FFFFFF;
+  text-align: center;
+  margin: 3.25rem auto;
+}
+
+.main .code-btn {
+	color: #D7063B;
+	height: 1.35rem;
+	line-height: 1.35rem;
+	width: 5.8rem;
+	height: 1.71rem;
+	border: .03rem solid #D7063B;
+	border-radius: .08rem;
+	font-size: 0.7rem;
+	line-height: 1.71rem;
+	text-align: center;
+	padding: 0;
+}

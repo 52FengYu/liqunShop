@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,minimum-scale=1,user-scalable=no,viewport-fit=cover" />
+    <meta id="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no" name="viewport" />
+    <meta name="format-detection" content="telephone=no" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <link rel="icon" type="image/x-icon" href="../../favicon.ico" />
+    <link rel="stylesheet" type="text/css" href="../../css/common/font-awesome/css/font-awesome.min.css" />
+    <script src="../../js/config.js"></script> 
+    <title>收货地址</title>
+    <style>
+        [v-clock]{
+            display:none
+        }
+    </style>
+</head>
+<body>
+    <div id="app" v-clock>
+        <template v-if="this.Result==0">
+            <div class="null">
+                <span>
+                    <svg t="1570414458079" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="4027" width="200" height="200"><path d="M512 455.466667a21.333333 21.333333 0 0 1-21.333333-21.333334v-143.146666a21.333333 21.333333 0 0 1 42.666666 0v143.146666a21.333333 21.333333 0 0 1-21.333333 21.333334z" p-id="4028" fill="#DAE1E3"></path><path d="M582.826667 384h-141.653334a21.333333 21.333333 0 0 1 0-42.666667h141.653334a21.333333 21.333333 0 1 1 0 42.666667z" p-id="4029" fill="#DAE1E3"></path><path d="M512 149.333333a193.493333 193.493333 0 0 1 193.493333 193.493334c0 106.666667-193.493333 324.48-193.493333 324.48s-193.493333-217.813333-193.493333-324.48A193.493333 193.493333 0 0 1 512 149.333333m0-42.666666a236.373333 236.373333 0 0 0-236.16 236.586666c0 117.12 170.666667 314.453333 204.373333 352.853334a42.666667 42.666667 0 0 0 64 0c34.133333-38.4 204.373333-235.733333 204.373334-352.853334A236.373333 236.373333 0 0 0 512 106.666667z" p-id="4030" fill="#DAE1E3"></path><path d="M512 869.12c-190.293333 0-382.72-42.666667-382.72-122.24 0-75.733333 162.133333-104.32 231.68-113.066667a21.333333 21.333333 0 0 1 23.893333 18.346667 21.333333 21.333333 0 0 1-18.56 23.893333C234.666667 692.693333 171.946667 728.32 171.946667 746.666667c0 27.093333 119.893333 79.573333 340.053333 79.573333S852.053333 773.973333 852.053333 746.666667c0-15.146667-51.626667-54.4-205.013333-72.106667a21.333333 21.333333 0 0 1-18.773333-23.68 21.333333 21.333333 0 0 1 23.68-18.773333C725.333333 640 894.72 668.8 894.72 746.666667S702.293333 869.12 512 869.12z" p-id="4031" fill="#DAE1E3"></path></svg>
+                </span>
+                <p>
+                    您还没有收货地址哦~
+                </p>
+                <button class="add" @click="goPage('addAddress.html')">
+                    新建地址
+                </button>
+            </div>
+        </template> 
+        <template v-else>
+            <div class="content">
+                <div
+                    class="item"
+                    v-for="item in this.Result"
+                    :key="item.ID"
+                    :id="item.ID"
+                >
+                    <div class="top">
+                        <p>{{item.ReceiveMan}}</p>
+                        <span>{{item.ReceiveMobile}}</span>
+                    </div>
+                    <div class="address">
+                        {{item.ReceiveAddr}}
+                    </div>
+                    <div class="bottom">
+                        <span class="remove" :id="item.ID" @click="geditAddress">删除</span>
+                        <p class="edit" @click="goPage(WebRoute.Page.editAddress + '&AddrX=' + item.AddrX + '&AddrY=' + item.AddrY + '&ReceiveAddr=' + item.ReceiveAddr + '&ReceiveAreaID=' + item.ReceiveAreaID + '&ReceiveMobile=' + item.ReceiveMobile + '&ReceiveMan=' + item.ReceiveMan + '&ID=' + item.ID)">编辑</p>
+                    </div>
+                </div>
+            </div>
+            <button id="add" @click="goPage('addAddress.html')">＋</button>
+        </template>   
+    </div>
+    <script type="text/javascript" src="../../js/common/jquery-1.9.1.min.js"></script>
+    <script type="text/javascript" src="../../js/common/loadjscss.js"></script>
+    <script type="text/javascript" src="../../js/common/vue-2.6.10.min.js"></script>
+    <script type="text/javascript" src="../../js/common/timehelper.js"></script>
+    <script type="text/javascript" src="../../js/common/fastclick.js"></script>
+    <script>
+        //每分钟获取新的路由文件 
+        document.write("<script type='text/javascript' src='../../js/route.js?t=" + GetURLTimeStr(10) + "'><\/script>");
+    </script>
+    <script type="text/javascript">
+        //如果是Debug模式替换路由路径
+        DebugRoute();
+    </script>
+    <script>
+        //加载common.js文件
+        document.write("<script type='text/javascript' src='" + JSRoute.Host + JSRoute.Common + "'><\/script>");
+    </script>
+    <script>
+        LoadCss(CSSRoute.Host + CSSRoute.Page.address)
+    </script>
+    <script>
+        //加载address.js文件
+        document.write("<script type='text/javascript' src='" + JSRoute.Host + JSRoute.Page.address + "'><\/script>");
+    </script>
+</body>
+</html>

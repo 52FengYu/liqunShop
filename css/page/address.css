@@ -1,0 +1,84 @@
+body{
+    background:rgb(245,245,245);
+    font-family:'宋体'
+}
+.null{
+    text-align: center;
+    margin-top: 8rem;
+}
+.null p{
+    color: #DAE1E3;
+}
+.null .add{
+    padding:0.15rem 2rem;
+    border: 1px solid rgb(255,48,48);
+    background: #fff;
+    border-radius: 0.5rem;
+    color: red
+}
+.item{
+    height: 8rem;
+    margin:0.2rem 0;
+    background: #fff;
+    border-radius: 0.6rem;
+}
+.item .top{
+    display: flex;
+    justify-content: space-between;
+    width: 92%;
+    margin-left: 4%;
+}
+.item .top span{
+    display: block;
+    margin-top: 1rem;
+}
+.item .address{
+    border-bottom:0.05rem solid #ddd;
+    width: 92%;
+    margin-left: 4%;
+    height:2rem
+}
+.item .bottom{
+    display: flex;
+    margin-left: 61%;
+    width: 10rem;
+}
+.item .bottom span{
+    display: block;
+    height:1.2rem;
+    width:2.5rem;
+    padding-left:0.5rem;
+    margin-top: 1rem;
+    margin-right: 1rem;
+    border-radius: 0.5rem;
+    color:red;
+    border:0.05rem solid red
+}
+.item .bottom p{
+    display:block;
+    border:1px solid #ccc;
+    padding:0 0.3rem;
+    border-radius:0.5rem; 
+    padding-left:1rem;
+    width:2.5rem
+}
+.item .bottom .remove{
+    display: block;
+    height: 1.2rem;
+    width: 3rem;
+    padding-left: 1rem;
+    margin-top: 1rem;
+    margin-right: 1rem;
+    border-radius: 0.5rem;
+    color: red;
+    border: 0.05rem solid red;
+}
+#add{
+    border: 0;
+    background: rgb(245,245,245);
+    color: red;
+    width: 100%;
+    height: 2rem;
+    font-size: 1.5rem;
+    outline:none;
+}

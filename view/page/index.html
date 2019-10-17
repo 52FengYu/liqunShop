@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1" />
+		<meta id="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no" name="viewport" />
+		<meta name="format-detection" content="telephone=no" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<link rel="icon" type="image/x-icon" href="../../favicon.ico" />
+		<link rel="stylesheet" type="text/css" href="../../css/common/font-awesome/css/font-awesome.min.css" />
+		<title>{{title}}</title>
+	</head>
+	<body style="display: none;">
+		<!--  -->
+		<div id="app">
+			<template v-if="pagedatalist.length > 0">
+				<template v-for="m in pagedatalist">
+					<div v-if="m.ContentTypeID==='1908080013'" style="position: relative;" :style="{backgroundColor:m.BackgroundColor}">
+						<!-- 服务页页头 -->
+						<img src="http://10.50.107.206:7030/O2O/Page/20190826/190826000001.png" style="width: 100%;" />
+						<div style=" position:absolute;top: 0; width:100%;height: 50%;display: flex; justify-content:flex-end;">
+							<a style="width: 3rem; padding-top: 0.3rem; text-align: center; color:#FFFFFF;" href="http://www.baidu.com">
+								<img style="width: 1.4rem;height: 1.2rem;padding: 0 0.2rem 0 0.2rem;" src="http://10.50.107.206:7030/O2O/Page/20190826/190826000003.png" />
+								<div style="font-size: 0.8rem;margin-top: -0.2rem;">搜索</div>
+							</a>
+							<a style="width: 3rem; padding-top: 0.3rem; text-align: center; color:#FFFFFF;" href="http://www.baidu.com">
+								<img style="width: 1.4rem;height: 1.2rem; padding: 0 0.2rem 0 0.2rem;" src="http://10.50.107.206:7030/O2O/Page/20190826/190826000002.png" />
+								<div style="font-size: 0.8rem;margin-top: -0.2rem;">会员卡</div>
+							</a>
+							<template v-for="md in m.Detail">
+
+							</template>
+						</div>
+						<div style=" position:absolute;  left: 5rem; right: 5rem; bottom: 0; height: 50%; background-color: #FFF;border-radius:0.8rem 0.8rem 0 0;">
+							<div style="margin:0 auto; text-align: center;">
+								<span style="font-size: 0.95rem;">金鼎广场
+									<i class="fa fa-caret-down" style="margin-left: 0.2rem;"></i>
+								</span>
+							</div>
+							<div style="margin: -0.5rem 0.2rem 0 0.2rem;">
+								<span style="font-size: 0.7rem;">青岛市崂山区...
+									<i class="fa fa-map-marker" style="margin: 0 0.2rem ;"></i>1.53km
+								</span>
+							</div>
+						</div>
+					</div>
+
+					<div v-else-if="m.ContentTypeID==='1908080003'" class="weui-flex">
+						<div v-if="m.Detail.length>0" style="width: 25%;">
+							<a href="http://www.baidu.com">
+								<img v-bind:src="m.Detail[0].BackgroundImageURL" style="width: 100%;" />
+							</a>
+						</div>
+						<div v-if="m.Detail.length>1" class="weui-flex__item">
+							<a href="http://www.baidu.com">
+								<img v-bind:src="m.Detail[1].BackgroundImageURL" style="width: 100%;" />
+							</a>
+						</div>
+						<div v-if="m.Detail.length>2" style="width: 25%;">
+							<a href="http://www.baidu.com">
+								<img v-bind:src="m.Detail[2].BackgroundImageURL" style="width: 100%;" />
+							</a>
+						</div>
+					</div>
+
+					<div v-else-if="m.ContentTypeID==='1908080002'" style="display: flex;">
+						<template v-for="md in m.Detail">
+							<div style="width: 25%;">
+								<a href="http://www.baidu.com">
+									<img v-bind:src="md.BackgroundImageURL" style="width: 100%;" />
+								</a>
+							</div>
+						</template>
+					</div>
+
+					<div v-else-if="m.ContentTypeID==='1908080001'" class="swiper-container">
+						<!-- 幻灯片 -->
+						<div class="swiper-wrapper">
+							<div v-for="md in m.Detail" class="swiper-slide">
+								<img :src="md.BackgroundImageURL" alt="" />
+							</div>
+						</div>
+						<div class="swiper-pagination swiper-pagination-bullets"></div>
+					</div>
+
+					<div v-else-if="m.ContentTypeID==='1908080011'" class="footer">
+						<!-- 页尾5按钮 -->
+						<div v-for="md in m.Detail" class="item">
+							<img />
+						</div>
+					</div>
+				</template>
+			</template>
+		</div>
+
+		<script type="text/javascript" src="../../js/common/jquery-1.9.1.min.js"></script>
+		<script type="text/javascript" src="../../js/common/loadjscss.js"></script>
+		<script type="text/javascript" src="../../js/common/vue-2.6.10.min.js"></script>
+		<script type="text/javascript" src="../../js/common/timehelper.js"></script>
+		<script type="text/javascript" src="../../js/common/fastclick.js"></script>
+		<script>
+			//每分钟获取新的路由文件 
+			document.write("<script type='text/javascript' src='../../js/route.js?t=" + GetURLTimeStr(10) + "'><\/script>");
+		</script>
+		<script type="text/javascript" src="../../js/config.js"></script>
+		<script type="text/javascript">
+			//如果是Debug模式替换路由路径
+			DebugRoute();
+		</script>
+
+		<script type="text/javascript">
+			//加载WeUI的JS
+			LoadCss(CSSRoute.Host + CSSRoute.WeUI);
+			LoadCss(CSSRoute.Host + CSSRoute.JqWeUI);
+			document.write("<script type='text/javascript' src='" + JSRoute.Host + JSRoute.JqWeUI + "'><\/script>");
+		</script>
+
+		<script type="text/javascript">
+			LoadCss(CSSRoute.Host + CSSRoute.Swiper);
+			//幻灯片支持
+			document.write("<script type='text/javascript' src='" + JSRoute.Host + JSRoute.Swiper + "'><\/script>");
+		</script>
+
+
+		<script>
+			LoadCss(CSSRoute.Host + CSSRoute.Common);
+			LoadCss(CSSRoute.Host + CSSRoute.Page.Index);
+		</script>
+		<script type="text/javascript">
+			//加载cookie操作js
+			document.write("<script type='text/javascript' src='" + JSRoute.Host + JSRoute.cookie + "'><\/script>");
+		</script>
+		<script type="text/javascript">
+			//加载公共函数JS
+			document.write("<script type='text/javascript' src='" + JSRoute.Host + JSRoute.Common + "'><\/script>");
+		</script>
+
+		<script type="text/javascript">
+			//加载本页面JS
+			document.write("<script type='text/javascript' src='http://10.50.107.206:7020/pagejs/1908050001.js'><\/script>");
+		</script>
+
+		<script type="text/javascript">
+			//加载本页面JS
+			document.write("<script type='text/javascript' src='" + JSRoute.Host + JSRoute.Page.Index + "'><\/script>");
+		</script>
+	</body>
+</html>

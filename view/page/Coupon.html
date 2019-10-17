@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,minimum-scale=1,user-scalable=no,viewport-fit=cover" />
+    <meta id="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no" name="viewport" />
+    <meta name="format-detection" content="telephone=no" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <link rel="icon" type="image/x-icon" href="../../favicon.ico" />
+    <link rel="stylesheet" type="text/css" href="../../css/common/font-awesome/css/font-awesome.min.css" />
+    <script src="../../js/config.js"></script>  
+    <title>优惠券</title>
+    <style>
+        [v-clock]{
+            display:none
+        }
+    </style>
+</head>
+<body display="block" >
+        <div id="myCoupon" v-clock>
+            <div class="gray" v-clock>
+                <header class="header-container">
+                    <a class="header-left" href="javascript:history.back()">
+                        <i class="fa fa-angle-left "></i>
+                    </a>
+                    <span>代金券</span>
+                    <p class="header-right" @click="go_page">
+                        兑换
+                    </p>
+                </header>
+                <div class="weui-navbar tab-content">
+                    <div class="weui-navbar__item" :class=" {weui_bar__item_on : couponStatus == 'received'}"
+                            @click="changeType('received');getCouponList()" >可使用
+                    </div>
+                    <div class="weui-navbar__item" :class=" {weui_bar__item_on : couponStatus == 'used'}"
+                            @click="changeType('used');getCouponList()" >已使用
+                    </div>
+                    <div class="weui-navbar__item" :class=" {weui_bar__item_on : couponStatus == 'expired'}"
+                            @click="changeType('expired');getCouponList()" >已过期
+                    </div>
+                </div>
+                <div v-show="couponList.length" class="list-content">
+                    <ul>
+                        <li :class="{ 'disable': couponStatus !== 'received' }" v-for="(item,index) in couponList" :key="index">
+                            <div class="price">
+                                ￥<span class="big">{{ item.Amount }}</span><br>
+                                <span>满{{ item.UseAmount }}元可用</span>
+                            </div>
+                            <div class="content">
+                                <div class="info">
+                                    <img v-if="couponStatus == 'used'" src="../../img/page/coupon/done.png" alt="" class="done">
+                                    <img v-if="couponStatus == 'expired'" src="../../img/page/coupon/done1.png" alt="" class="done">
+                                    <p class="title">{{ item.GfitTokenName }}</p>
+                                    <p class="time">{{ item.BeginTime }} - {{ item.EndTime }}</p>
+                                    <p v-if="item.UseType == 'A'" class="fanwei">全场通用券</p>
+                                    <p v-if="item.UseType == 'B'" class="fanwei">品牌券</p>
+                                    <p v-if="item.UseType == 'C1'" class="fanwei">一级品类券</p>
+                                    <p v-if="item.UseType == 'C2'" class="fanwei">二级品类券</p>
+                                    <p v-if="item.UseType == 'C3'" class="fanwei">三级品类券</p>
+                                    <p v-if="item.UseType == 'P'" class="fanwei">单品券</p>
+                                    <p class="look" @click="changeActive(item)">
+                                        查看使用范围
+                                        <img v-if="item.active" src="../../img/page/coupon/geren_Coupon_icon_shouqi@2x.png" alt="">
+                                        <img v-else src="../../img/page/coupon/geren_Coupon_icon_xiala@2x.png" alt="">
+                                    </p>
+                                    <p v-if="item.active" class="look userExplain">{{ item.UseRange }}</p>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                    <infinite-loading :identifier="infiniteId" @infinite="infiniteHandler" v-if="length >= pageSize">
+                        <div slot="no-more">
+                            <div class="bottom-line">----------- 没有更多了哦 ~ -----------</div>
+                        </div>
+                    </infinite-loading>
+                    <div class="bottom-line" v-if="length < pageSize" >----------- 没有更多了哦 ~ -----------</div>
+                </div>
+            </div>
+            <div class="empty-coupon" v-if="showLoading && !couponList.length">
+                <img src="../../img/page/coupon/list_empty@2x.png" alt=""/>
+                <p class="prompt-text">暂时没有优惠券哦~</p>
+                <span class="link-button weui-btn" @click="go_page()">去逛逛</span>
+            </div>
+        </div>
+    <script type="text/javascript" src="../../js/common/jquery-1.9.1.min.js"></script>
+    <script type="text/javascript" src="../../js/common/loadjscss.js"></script>
+    <script type="text/javascript" src="../../js/common/vue-2.6.10.min.js"></script>
+    <script type="text/javascript" src="../../js/common/timehelper.js"></script>
+    <script type="text/javascript" src="../../js/common/fastclick.js"></script>
+    <script>
+        //每分钟获取新的路由文件 
+        document.write("<script type='text/javascript' src='../../js/route.js?t=" + GetURLTimeStr(10) + "'><\/script>");
+    </script>
+    <script type="text/javascript">
+        //如果是Debug模式替换路由路径
+        DebugRoute();
+    </script>
+    <script>
+        //加载本页面mintui-js文件
+        document.write("<script type='text/javascript' src='" + JSRoute.Host + JSRoute.mintUI + "'><\/script>");
+    </script>    
+    <script>
+        //加载common.js文件
+        document.write("<script type='text/javascript' src='" + JSRoute.Host + JSRoute.Common + "'><\/script>");
+    </script>
+    <script>
+        LoadCss(CSSRoute.Host + CSSRoute.mintUI);
+        LoadCss(CSSRoute.Host + CSSRoute.Page.Coupon);
+        </script>
+    <script type="text/javascript">
+        //加载WeUI的JS
+        LoadCss(CSSRoute.Host + CSSRoute.WeUI);
+        LoadCss(CSSRoute.Host + CSSRoute.JqWeUI);
+        document.write("<script type='text/javascript' src='" + JSRoute.Host + JSRoute.JqWeUI + "'><\/script>");
+    </script>
+    <script>
+        LoadCss(CSSRoute.Host + CSSRoute.Iconfont);
+    </script>
+    <script>
+        //加载coupon.js文件
+        document.write("<script type='text/javascript' src='" + JSRoute.Host + JSRoute.Page.Coupon + "'><\/script>");
+    </script>
+</body>
+ </html>

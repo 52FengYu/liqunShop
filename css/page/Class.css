@@ -1,0 +1,85 @@
+html{
+            font-size: calc(100vw/30);
+        }
+        .top input{
+            padding:0.3rem 0
+        }
+        .fa{
+            margin-top:0.15rem
+        }
+		.left{
+			padding:0.5rem 0.5rem;
+			/* background:#ccc; */
+			list-style:none;
+			width:auto;
+			font-size:0.35rem;
+			position:fixed;
+		}
+		.left li{
+			list-style:none;
+			padding:0.5rem 0.4rem;
+			width:100%;
+			text-align: center;
+			height:1rem
+		}
+		.right{
+			margin-left:25%
+		}
+		.content{
+			font-size:12px;
+			list-style:none;
+			width:22rem
+		}
+        .items{
+            width:20rem
+        }
+        .little{
+            display: inline-block;
+			box-orient:vertical;
+			font-size:14px;
+			height:4.5rem;
+			width:5.5rem;
+			background:skyblue;
+			margin:0.5rem;
+			text-align: center
+        }
+        .little a{
+            text-decoration:none; 
+            color:black;
+            width:100%;
+            height:100%;
+            display:block
+        }
+        .title p{
+            width: 6rem;
+            text-align: center;
+        }
+        .item{
+            width:18rem;
+            display:block
+        }
+		.item span{
+            display:block;
+            line-height:1rem;
+			font-size:0.4rem;
+			list-style:none;
+			width:18rem;
+            border-radius: 10px;
+			background:#ccc;
+			padding-left:0.7rem;
+			height:1rem
+		}
+        .item p{
+            font-size:13px;
+            display:block
+        } 
+		.active{
+			border:2px solid red;
+			border-top:0;
+			border-bottom:0;
+			border-right:0;
+			color:red
+		}
+        [v-clock]{
+            display:none
+        }

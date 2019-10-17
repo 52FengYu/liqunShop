@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+	<head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+        <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,minimum-scale=1,user-scalable=no,viewport-fit=cover" />
+        <meta id="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no" name="viewport" />
+        <meta name="format-detection" content="telephone=no" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <link rel="icon" type="image/x-icon" href="../../favicon.ico" />
+        <link rel="stylesheet" type="text/css" href="../../css/common/font-awesome/css/font-awesome.min.css" />
+        <script src="../../js/config.js"></script>  
+        <title>会员卡</title>
+        <style>
+            [v-clock]{
+                display: none
+            }
+        </style>
+    </head>
+    <body>
+        <div id="app" v-clock>
+            <div class="top">
+                <div class="memberInfo">
+                    <div class="Info">
+                        <p>{{Right.MemberRealName}}</p>
+                        <span>卡号：</span><span>{{Right.CardNo}}</span>
+                        <p>
+                            <a href="">绑定其他会员卡</a>
+                        </p>
+                    </div>
+                    <div class="integral">
+                        <span>当前积分</span>
+                        <b>{{Right.MemberPoint}}</b>
+                    </div>
+                </div>
+                <div class="assets">
+                        <div class="Explain">
+                            <span>积分说明</span>
+                        </div>
+                        <div class="Record">
+                            <span>积分记录</span>
+                        </div>
+                    </div>
+            </div>
+            <div class="code">
+                <h1>&nbsp;</h1>
+            </div>
+        </div>
+        <script type="text/javascript" src="../../js/common/jquery-1.9.1.min.js"></script>
+		<script type="text/javascript" src="../../js/common/loadjscss.js"></script>
+		<script type="text/javascript" src="../../js/common/vue-2.6.10.min.js"></script>
+		<script type="text/javascript" src="../../js/common/timehelper.js"></script>
+		<script type="text/javascript" src="../../js/common/fastclick.js"></script>
+		<script>
+			//每分钟获取新的路由文件 
+			document.write("<script type='text/javascript' src='../../js/route.js?t=" + GetURLTimeStr(10) + "'><\/script>");
+		</script>
+		<script type="text/javascript">
+			//如果是Debug模式替换路由路径
+			DebugRoute();
+        </script>
+        <script type="text/javascript">
+            //加载公共函数JS
+            document.write("<script type='text/javascript' src='" + JSRoute.Host + JSRoute.Common + "'><\/script>");
+		</script>
+        <script>
+            LoadCss(CSSRoute.Host + CSSRoute.Page.layUI);
+        </script>
+        <script>
+            LoadCss(CSSRoute.Host + CSSRoute.Page.MembershipCard);
+        </script>
+        <script>
+            document.write("<script type='text/javascript' src='" + JSRoute.Host + JSRoute.Page.MembershipCard + "'><\/script>");
+        </script>
+    </body>    
+</html>

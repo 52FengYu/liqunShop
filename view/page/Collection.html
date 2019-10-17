@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,minimum-scale=1,user-scalable=no,viewport-fit=cover" />
+    <meta id="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no" name="viewport" />
+    <meta name="format-detection" content="telephone=no" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <link rel="icon" type="image/x-icon" href="../../favicon.ico" />
+    <link rel="stylesheet" type="text/css" href="../../css/common/font-awesome/css/font-awesome.min.css" />
+    <script src="../../js/config.js"></script>  
+    <title>我的收藏</title>
+    <style>
+        [v-clock]{
+            display: none
+        }
+    </style>
+</head>
+<body>
+    <div id="app" v-clock>
+        <div class="navbar" v-clock>
+            <mt-navbar v-model="selected" v-clock>
+                <mt-tab-item id="1">商品</mt-tab-item>
+                <mt-tab-item id="2">商户</mt-tab-item>
+            </mt-navbar>
+            <!-- tab-container -->
+            <mt-tab-container v-model="selected">
+                <mt-tab-container-item id="1">
+                    <div class="tips" v-if="this.Result.ProductList == null">   <!-- result存在  这条div隐藏  不存在  显示 -->
+                        <svg t="1570262396370" class="icon" viewBox="0 0 1165 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="2659" width="200" height="200"><path d="M945.230769 1024H220.553846A220.553846 220.553846 0 0 1 0 803.446154V220.553846A220.553846 220.553846 0 0 1 220.553846 0h192.512a78.769231 78.769231 0 0 1 69.159385 41.117538l67.584 123.98277a15.753846 15.753846 0 0 0 13.863384 8.192H945.230769a220.553846 220.553846 0 0 1 220.553846 220.553846v409.6a220.553846 220.553846 0 0 1-220.553846 220.553846zM220.553846 63.015385A157.538462 157.538462 0 0 0 63.015385 220.553846v582.892308a157.538462 157.538462 0 0 0 157.538461 157.538461h724.676923a157.538462 157.538462 0 0 0 157.538462-157.538461V393.846154a157.538462 157.538462 0 0 0-157.538462-157.538462H563.672615a78.769231 78.769231 0 0 1-69.159384-41.117538L426.929231 71.207385a15.753846 15.753846 0 0 0-13.863385-8.192z" fill="#bfbfbf" p-id="2660"></path><path d="M707.505231 842.043077a53.563077 53.563077 0 0 1-25.678769-7.089231L582.892308 782.651077 481.910154 834.953846a54.665846 54.665846 0 0 1-78.769231-57.816615l19.692308-111.379693-80.502154-78.76923a54.508308 54.508308 0 0 1 30.562461-92.790154l111.852308-15.753846L535.630769 376.832A53.878154 53.878154 0 0 1 583.837538 346.584615a54.350769 54.350769 0 0 1 48.679385 30.562462l49.624615 101.612308 111.69477 16.856615a54.350769 54.350769 0 0 1 29.774769 92.947692l-81.289846 78.769231 18.589538 111.379692a54.350769 54.350769 0 0 1-21.897846 53.248 54.980923 54.980923 0 0 1-31.507692 10.082462z m3.938461-62.070154zM582.892308 718.532923a54.823385 54.823385 0 0 1 25.678769 6.301539l88.379077 47.261538-15.753846-98.934154a54.193231 54.193231 0 0 1 15.753846-47.261538l71.995077-69.632-99.091693-15.753846a54.665846 54.665846 0 0 1-40.96-29.932308l-43.795692-90.112-44.898461 89.639384a53.720615 53.720615 0 0 1-41.117539 29.617231l-99.249231 14.020923 71.522462 70.262154a54.508308 54.508308 0 0 1 15.753846 48.364308l-17.486769 98.619077L557.056 724.676923a54.508308 54.508308 0 0 1 25.836308-6.144z" fill="#bfbfbf" p-id="2661"></path></svg>
+                        <p>您还没有收藏哦~</p>   
+                    </div> 
+                    <div 
+                     v-else
+                     class="products"
+                     v-for="item in Result.ProductList"
+                     :key="item.ID"
+                     :id="item.ID"
+                     >
+                        <div class="product" @click="goPage(WebPage.Page.productDetails + item.ID)">
+                            <div class="Image">
+                                <img :src="item.ImageURL" alt="">
+                            </div>
+                            <div class="productDetails">
+                                <p>{{item.DisplayName}}</p>
+                                <span>{{item.MemberPrice}}</span>元
+                                <i>库存:{{item.Stock}}</i>
+                            </div>
+                        </div>
+                        <button class="Cancel" @click="goPage('#?id=' + item.ID);CancelCollection()">取消收藏</button>
+                    </div>  
+                </mt-tab-container-item>
+                <mt-tab-container-item id="2">
+                    <div class="tips" v-if="this.Result">   <!-- result存在  这条div隐藏  不存在  显示 -->
+                        <svg t="1570262396370" class="icon" viewBox="0 0 1165 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="2659" width="200" height="200"><path d="M945.230769 1024H220.553846A220.553846 220.553846 0 0 1 0 803.446154V220.553846A220.553846 220.553846 0 0 1 220.553846 0h192.512a78.769231 78.769231 0 0 1 69.159385 41.117538l67.584 123.98277a15.753846 15.753846 0 0 0 13.863384 8.192H945.230769a220.553846 220.553846 0 0 1 220.553846 220.553846v409.6a220.553846 220.553846 0 0 1-220.553846 220.553846zM220.553846 63.015385A157.538462 157.538462 0 0 0 63.015385 220.553846v582.892308a157.538462 157.538462 0 0 0 157.538461 157.538461h724.676923a157.538462 157.538462 0 0 0 157.538462-157.538461V393.846154a157.538462 157.538462 0 0 0-157.538462-157.538462H563.672615a78.769231 78.769231 0 0 1-69.159384-41.117538L426.929231 71.207385a15.753846 15.753846 0 0 0-13.863385-8.192z" fill="#bfbfbf" p-id="2660"></path><path d="M707.505231 842.043077a53.563077 53.563077 0 0 1-25.678769-7.089231L582.892308 782.651077 481.910154 834.953846a54.665846 54.665846 0 0 1-78.769231-57.816615l19.692308-111.379693-80.502154-78.76923a54.508308 54.508308 0 0 1 30.562461-92.790154l111.852308-15.753846L535.630769 376.832A53.878154 53.878154 0 0 1 583.837538 346.584615a54.350769 54.350769 0 0 1 48.679385 30.562462l49.624615 101.612308 111.69477 16.856615a54.350769 54.350769 0 0 1 29.774769 92.947692l-81.289846 78.769231 18.589538 111.379692a54.350769 54.350769 0 0 1-21.897846 53.248 54.980923 54.980923 0 0 1-31.507692 10.082462z m3.938461-62.070154zM582.892308 718.532923a54.823385 54.823385 0 0 1 25.678769 6.301539l88.379077 47.261538-15.753846-98.934154a54.193231 54.193231 0 0 1 15.753846-47.261538l71.995077-69.632-99.091693-15.753846a54.665846 54.665846 0 0 1-40.96-29.932308l-43.795692-90.112-44.898461 89.639384a53.720615 53.720615 0 0 1-41.117539 29.617231l-99.249231 14.020923 71.522462 70.262154a54.508308 54.508308 0 0 1 15.753846 48.364308l-17.486769 98.619077L557.056 724.676923a54.508308 54.508308 0 0 1 25.836308-6.144z" fill="#bfbfbf" p-id="2661"></path></svg>
+                        <p>您还没有收藏哦~</p>   
+                    </div> 
+                    <div v-else>123</div>  
+                </mt-tab-container-item>
+            </mt-tab-container>
+        </div>
+    </div>
+    <script type="text/javascript" src="../../js/common/jquery-1.9.1.min.js"></script>
+    <script type="text/javascript" src="../../js/common/loadjscss.js"></script>
+    <script type="text/javascript" src="../../js/common/vue-2.6.10.min.js"></script>
+    <script type="text/javascript" src="../../js/common/timehelper.js"></script>
+    <script type="text/javascript" src="../../js/common/fastclick.js"></script>
+    <script>
+        //每分钟获取新的路由文件 
+        document.write("<script type='text/javascript' src='../../js/route.js?t=" + GetURLTimeStr(10) + "'><\/script>");
+            </script>
+    <script type="text/javascript">
+        //如果是Debug模式替换路由路径
+        DebugRoute();
+    </script>
+    <script>
+        //加载 mint-UI js文件
+        document.write("<script type='text/javascript' src='" + JSRoute.Host + JSRoute.mintUI + "'><\/script>");
+            </script> 
+    <script>
+        //加载common.js文件
+        document.write("<script type='text/javascript' src='" + JSRoute.Host + JSRoute.Common + "'><\/script>");
+    </script>
+    <script>
+        //加载本页面的js文件
+        document.write("<script type='text/javascript' src='" + JSRoute.Host + JSRoute.Page.Collection + "'><\/script>")
+    </script>
+    <script>
+        LoadCss(CSSRoute.Host + CSSRoute.mintUI);
+        LoadCss(CSSRoute.Host + CSSRoute.Page.Collection)
+    </script>
+</body>
+</html>

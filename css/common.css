@@ -1,0 +1,70 @@
+html,
+body {
+	max-width: 37.5rem;
+	margin: 0 auto;
+	font-family: "Arial", "Microsoft YaHei", "黑体", "宋体", "微软雅黑", sans-serif;
+	width: 100%;
+	height: 100%;
+}
+
+
+.header {
+	position: relative;
+	display: flex;
+	align-items: center;
+	top: 0;
+	z-index: 1000;
+	width: 100%;
+	font-size: 1rem;
+	font-family: PingFangSC-Medium;
+	color: #333;
+	height: 1.85rem;
+	border-bottom: .02rem solid #e5e5e5;
+	background-color: #fff;
+}
+
+.header .headertitle {
+	width: 100%;
+	text-align: center;
+}
+
+.header .header-left {
+	position: absolute;
+	top: 0.6rem;
+	left: .2rem;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	height: .64rem;
+	width: .64rem;
+	margin-left: 0.5rem;
+}
+
+.header-left i {
+	font-size: 1.2rem;
+	color: #333333;
+}
+
+.header .header-right {
+	position: absolute;
+	right: .2rem;
+	font-size: 1rem;
+	font-family: PingFangSC-Medium;
+	color: #333;
+	text-align: center;
+	width: 3rem;
+}
+
+#app {
+	display: flex;
+	min-height: 100vh;
+	min-width: 100%;
+	flex-direction: column;
+}
+
+
+.footer {
+	width: 100%;
+	height: 2.75rem;
+	margin-top: auto; 
+}

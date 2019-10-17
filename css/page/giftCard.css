@@ -1,0 +1,169 @@
+html{
+    font-size: calc(100vw/30);
+}
+.top{
+    background: -webkit-linear-gradient(left, rgb(250,103,83) , rgb(248,71,67)v);
+    background: -o-linear-gradient(right, rgb(250,103,83) , rgb(248,71,67));
+    background: -moz-linear-gradient(right, rgb(250,103,83) , rgb(248,71,67));
+    background: linear-gradient(to right, rgb(250,103,83) , rgb(248,71,67));
+    height: 12rem;
+    color: #fff;
+}
+.top .money{
+    text-align: center;
+    padding-top: 1.5rem;
+}
+.top .money>h1{
+    margin-top: 2rem;
+    font-family: 宋体;
+}
+.top>h4{
+    background: rgb(242,62,58);
+    font-size: 1.2rem;
+    font-family: '宋体';
+    height: 2.5rem;
+    line-height: 2.5rem;
+    padding-left: 1rem;
+    position: absolute;
+    top: 9.5rem;
+    width: 29rem;
+}
+.content>h3{
+    font-family: '宋体';
+    font-size: 1.4rem;
+    text-align: center;
+    padding-top: 1rem;
+}
+.padding-header {
+    padding-top: .88rem;
+}
+
+.add {
+    font-size: .28rem;
+    color: #666666;
+}
+
+.setting {
+    position: relative;
+    font-size: .28rem;
+    height: 100%;
+    padding-bottom: .20rem;
+}
+
+.default {
+    width: 7.50rem;
+    background: linear-gradient(-45deg, #f74140, #f9574b, #fb7058);
+    color: #fff;
+    text-align: center;
+}
+.default .title {
+    padding: .28rem 0 .18rem 0;
+}
+.default .money {
+    font-size: .68rem;
+    padding-bottom: .20rem;
+}
+.default .bottom {
+    height: .48rem;
+    line-height: .48rem;
+    font-size: .24rem;
+    padding: 0 .34rem;
+    text-align: left;
+}
+.default .bottom-empty {
+    background: rgba(239, 54, 53, 0.6);
+}
+
+.card {
+    width: 25.59rem;
+    height: 12.3rem;
+    margin: .20rem auto 0 auto;
+    color: #fff;
+    padding: .30rem;
+    background: url("../../img/giftCard/default.png") 0 0 no-repeat;
+    background-size: 100%;
+    }
+.card .logo {
+    width: 9.09rem;
+    height: 3.52rem;
+    background: url("../../img/giftCard/logo.png") 0 0 no-repeat;
+    background-size: 100%;
+    }
+.card .ml60 {
+    margin-left: .60rem;
+}
+.card .record {
+    font-size: .22rem;
+    color: #8E8E8E;
+}
+.card .gray {
+    color: #8E8E8E;
+}
+.card .Top {
+    display: flex;
+    justify-content: space-between;
+}
+.card .card-num {
+    font-weight: 800;
+    font-size: initial;
+    padding-left: 2rem;
+}
+.card .money {
+    padding-left: 2rem;
+    display: flex;
+    padding-top: 1rem;
+    font-size: initial;
+    margin-bottom: .40rem;
+}
+.card .money .amount{
+    margin-top: 0.3rem;
+    margin-right:2rem
+}
+.card .money .balance{
+    margin-top:0.3rem
+}
+.card .date {
+    font-size: .20rem;
+    text-align: right;
+    display: flex;
+    margin-top: 2rem;
+    margin-left: 0.5rem;
+}
+.content{
+    padding-top:0.5rem
+}
+.card-red {
+    background: url("../../img/page/giftCard/red.png") 0 0 no-repeat;
+    background-size: 100%;
+}
+.card-red .logo {
+    background: url("../../img/page/giftCard/logo1.png") 0 0 no-repeat;
+    background-size: 100%;
+}
+.card-red .red, .card-red .record {
+    color: #F9E4E0;
+}
+
+.card-blue {
+    background: url("../../img/page/giftCard/blue.png") 0 0 no-repeat;
+    background-size: 100%;
+}
+.card-blue .logo {
+    background: url("../../img/page/giftCard/logo2.png") 0 0 no-repeat;
+    background-size: 100%;
+}
+.card-blue .blue, .card-blue .record {
+    color: #E3F5F6;
+}
+
+.card-purple {
+    background: url("../../img/page/giftCard/zi.png") 0 0 no-repeat;
+    background-size: 100%;
+}
+.card-purple .logo {
+    background: url("../../img/page/giftCard/logo3.png") 0 0 no-repeat;
+    background-size: 100%;
+}
+.card-purple .viole, .card-purple .record {
+    color: #F3E0FF;
+}

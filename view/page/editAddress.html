@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+        <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,minimum-scale=1,user-scalable=no,viewport-fit=cover" />
+        <meta id="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no" name="viewport" />
+        <meta name="format-detection" content="telephone=no" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <link rel="icon" type="image/x-icon" href="../../favicon.ico" />
+        <link rel="stylesheet" type="text/css" href="../../css/common/font-awesome/css/font-awesome.min.css" />
+        <script src="../../js/config.js"></script> 
+        <title>修改收货地址</title>
+</head>
+<body>
+    <div id="app">
+        <div class="top">
+            <div class="person">
+                <span>联系人</span>
+                <input type="text" placeholder="您的姓名" v-model="ReceiveMan">
+            </div>
+            <div class="Mobile">
+                <span>手机号</span>
+                <input id="useMobile" type="number" placeholder="配送员联系您的手机号" maxlength="11" oninput = "value=value.replace(/[^\d]/g,'')" v-model="ReceiveMobile"  @blur="animate()">
+            </div>
+        </div>
+        <div class="bottom">
+            <div class="address">
+                <span>收货地址</span>
+                <input id="point" type="text" placeholder="点击选择" @click="goPage(WebRoute.Page.mapAddress)" v-model="addressPoint">
+                <p><svg t="1570691605411" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="2210" width="20" height="20"><path d="M857.70558 495.009024 397.943314 27.513634c-7.132444-7.251148-18.794042-7.350408-26.048259-0.216941-7.253194 7.132444-7.350408 18.795065-0.216941 26.048259l446.952518 454.470749L365.856525 960.591855c-7.192819 7.192819-7.192819 18.85544 0 26.048259 3.596921 3.596921 8.311293 5.39487 13.024641 5.39487s9.42772-1.798972 13.024641-5.39487L857.596086 520.949836C864.747973 513.797949 864.796068 502.219239 857.70558 495.009024z" p-id="2211"></path></svg></p>
+            </div>
+            <textarea id="area" name="ss" placeholder=" 详细地址 (比如楼号/楼层/房号)" v-model="ReceiveAddr"></textarea>  
+            <p><span id="text-count">50</span>/50</p>  
+        </div>
+        <button class="save" @click="edit">保存</button>
+    </div>
+    <script type="text/javascript" src="../../js/common/jquery-1.9.1.min.js"></script>
+    <script type="text/javascript" src="../../js/common/loadjscss.js"></script>
+    <script type="text/javascript" src="../../js/common/vue-2.6.10.min.js"></script>
+    <script type="text/javascript" src="../../js/common/timehelper.js"></script>
+    <script type="text/javascript" src="../../js/common/fastclick.js"></script>
+    <script>
+        //每分钟获取新的路由文件 
+        document.write("<script type='text/javascript' src='../../js/route.js?t=" + GetURLTimeStr(10) + "'><\/script>");
+    </script>
+    <script type="text/javascript">
+        //如果是Debug模式替换路由路径
+        DebugRoute();
+    </script>
+    <script>
+        LoadCss(CSSRoute.Host + CSSRoute.Page.editAddress)
+    </script>
+    <script>
+        //加载common.js文件
+        document.write("<script type='text/javascript' src='" + JSRoute.Host + JSRoute.Common + "'><\/script>");
+    </script>
+    <script>
+        document.write("<script type='text/javascript' src='" + JSRoute.Host + JSRoute.Page.editAddress + "'><\/script>");
+    </script>
+</body>
+</html>
